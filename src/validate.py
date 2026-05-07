@@ -20,10 +20,22 @@ def save_validation_result(df, invalid, entity_name):
         index=False
     )
 
+    result = {
+        "table_name": entity_name,
+        "valid_rows": len(valid),
+        "rejected_rows": len(invalid),
+        "total_rows": len(df)
+    }
+
+    success_rate = round((len(valid) / len(df)) * 100, 2)
+
     print(
         f"{entity_name.capitalize()} validated | "
-        f"valid: {len(valid)} | rejected: {len(invalid)}"
+        f"valid: {len(valid)} | rejected: {len(invalid)} | "
+        f"success rate: {success_rate}%"
     )
+
+    return result
 
 
 def validate_orders():
@@ -52,7 +64,7 @@ def validate_orders():
         | (df["order_purchase_timestamp"] > pd.Timestamp.now())
     ]
 
-    save_validation_result(df, invalid, "orders")
+    return save_validation_result(df, invalid, "orders")
 
 
 def validate_customers():
@@ -67,7 +79,7 @@ def validate_customers():
         | (df["customer_state"].astype(str).str.len() != 2)
     ]
 
-    save_validation_result(df, invalid, "customers")
+    return save_validation_result(df, invalid, "customers")
 
 
 def validate_payments():
@@ -80,13 +92,17 @@ def validate_payments():
         | (df["payment_value"] < 0)
     ]
 
-    save_validation_result(df, invalid, "payments")
+    return save_validation_result(df, invalid, "payments")
 
 
 def run():
-    validate_orders()
-    validate_customers()
-    validate_payments()
+    results = []
+
+    results.append(validate_orders())
+    results.append(validate_customers())
+    results.append(validate_payments())
+
+    return results
 
 
 if __name__ == "__main__":

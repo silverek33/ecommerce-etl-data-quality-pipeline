@@ -1,7 +1,8 @@
-import os
-import pandas as pd
-from dotenv import load_dotenv
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import pandas as pd
+import os
+from pathlib import Path
 
 PROCESSED_PATH = "data/processed"
 
@@ -40,6 +41,33 @@ def run():
     load_table(engine, "sellers_clean.csv", "stg_sellers")
     load_table(engine, "category_translation_clean.csv", "stg_category_translation")
 
+def load_validation_summary(engine, validation_results):
+    rows = []
+
+    for r in validation_results:
+        success_rate = round(
+            (r["valid_rows"] / r["total_rows"]) * 100,
+            2
+        )
+
+        rows.append({
+            "table_name": r["table_name"],
+            "valid_rows": r["valid_rows"],
+            "rejected_rows": r["rejected_rows"],
+            "total_rows": r["total_rows"],
+            "success_rate": success_rate
+        })
+
+    df = pd.DataFrame(rows)
+
+    df.to_sql(
+        "etl_validation_summary",
+        engine,
+        if_exists="append",
+        index=False
+    )
+
+    print("Loaded validation summary")
 
 if __name__ == "__main__":
     run()

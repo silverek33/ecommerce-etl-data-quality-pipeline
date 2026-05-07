@@ -3,6 +3,7 @@ import time
 from make_dirty_data import run as make_dirty
 from transform import run as transform_data
 from validate import run as validate_data
+from load import load_validation_summary, get_engine
 from load import run as load_data
 
 
@@ -20,10 +21,14 @@ def run_pipeline():
     transform_data()
 
     print("\n[3/4] Validating data...")
-    validate_data()
+    validation_results = validate_data()
 
     print("\n[4/4] Loading data to PostgreSQL...")
     load_data()
+
+    # Load validation summary
+    engine = get_engine()
+    load_validation_summary(engine, validation_results)
 
     end_time = time.time()
 
