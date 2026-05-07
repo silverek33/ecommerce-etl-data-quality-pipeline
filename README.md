@@ -14,7 +14,9 @@ The goal of this project is to simulate a real-world ETL process where messy e-c
 ## Dataset
 
 This project uses the Brazilian E-Commerce Public Dataset by Olist.
-```https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data```
+```
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data
+```
 Raw CSV files are not stored in this repository due to file size limitations and data management best practices.
 
 To run the project locally, download the dataset and place the required CSV files in:
@@ -32,7 +34,7 @@ olist_sellers_dataset.csv
 product_category_name_translation.csv
 ```
 
-ETL Pipeline
+##ETL Pipeline
 ```
 Raw CSV files
       ↓
@@ -48,8 +50,7 @@ PostgreSQL staging tables
       ↓
 Analytical SQL views
 ```
-
-Key Features
+##Key Features
 ```
 Automated ETL orchestration
 Data quality issue simulation
@@ -70,7 +71,7 @@ order purchase date cannot be in the future
 payment value cannot be negative
 customer state must use a valid two-letter format
 ```
-Project Structure
+##Project Structure
 ```
 data/
   raw/
