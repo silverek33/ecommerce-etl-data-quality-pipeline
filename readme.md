@@ -50,6 +50,7 @@ Analytical SQL views
 ```
 
 Key Features
+```
 Automated ETL orchestration
 Data quality issue simulation
 Data cleaning and standardization
@@ -59,16 +60,16 @@ PostgreSQL data loading
 Analytical SQL views
 Modular Python structure
 Data Quality Rules
-
+```
 Examples of validation rules used in the project:
-
+```
 order ID cannot be null
 customer ID cannot be null
 order status must belong to an accepted status list
 order purchase date cannot be in the future
 payment value cannot be negative
 customer state must use a valid two-letter format
-
+```
 Project Structure
 ```
 data/
