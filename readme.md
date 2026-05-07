@@ -14,7 +14,7 @@ The goal of this project is to simulate a real-world ETL process where messy e-c
 ## Dataset
 
 This project uses the Brazilian E-Commerce Public Dataset by Olist.
-
+```https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data```
 Raw CSV files are not stored in this repository due to file size limitations and data management best practices.
 
 To run the project locally, download the dataset and place the required CSV files in:
@@ -131,7 +131,7 @@ vw_payment_distribution
 vw_data_quality_summary
 ```
 Tech Stack
-
+```
 Python
 Pandas
 PostgreSQL
@@ -140,3 +140,4 @@ python-dotenv
 SQL
 ETL
 Data Quality
+```
