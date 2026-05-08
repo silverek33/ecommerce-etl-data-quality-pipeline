@@ -296,7 +296,7 @@ payments   | valid: 102,848 | rejected: 1,038 | success rate: 99.00%
 
 ## PostgreSQL Validation Summary
 
-![PostgreSQL Validation Summary](http://kuzmasylwester.com/wp-content/uploads/2026/05/Zrzut-ekranu-2026-05-08-003153.png)
+![PostgreSQL Validation Summary](http://kuzmasylwester.com/wp-content/uploads/2026/05/Zrzut-ekranu-2026-05-08-105059.png)
 
 ---
 
